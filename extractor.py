@@ -2,6 +2,7 @@ import csv
 from math import floor
 from datetime import datetime
 import re
+from tqdm import tqdm
 
 
 class Company(object):
@@ -96,7 +97,7 @@ class SimFinDataset:
         row_count = sum(1 for _ in reader)
         csvfile.seek(0)
 
-        for row in reader:
+        for row in tqdm(reader):
             numRow += 1
             if numRow > 1 and numRow != row_count and numRow != row_count-1:
                 # info rows for company
